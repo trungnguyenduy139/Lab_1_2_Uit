@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context="com.example.trungnguyen.labuit.MainActivity">
+
+    <Button
+        android:id="@+id/btLinearLayout_Code"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:text="LINEAR LAYOUT CODE"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btLinearLayout_Xml"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:text="LINEAR LAYOUT XML"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btRelativeLayout"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:text="Relative LAYOUT"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/lvTh4"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:text="LISTVIEW"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
