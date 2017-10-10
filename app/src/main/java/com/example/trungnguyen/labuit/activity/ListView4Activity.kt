@@ -7,10 +7,11 @@ import android.widget.*
 import com.example.trungnguyen.labuit.R
 import com.example.trungnguyen.labuit.bean.EmployeeFullTime
 import com.example.trungnguyen.labuit.bean.EmployeePartTime
+import com.example.trungnguyen.labuit.helper.ConstantHelper
 
 class ListView4Activity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemLongClickListener {
 
-    override fun onItemLongClick(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long): Boolean {
+    override fun onItemLongClick(p0: AdapterView<*>?, view: View?, position: Int, p3: Long): Boolean {
         mEmployeeList.removeAt(position)
         mAdapter?.notifyDataSetChanged()
         return true
@@ -27,8 +28,8 @@ class ListView4Activity : AppCompatActivity(), View.OnClickListener, AdapterView
     private var btAddMoreEmployee: Button? = null
     private var mListView4: ListView? = null
     private val mEmployeeList: ArrayList<String> = ArrayList()
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_view4)
         initViews()
@@ -55,13 +56,13 @@ class ListView4Activity : AppCompatActivity(), View.OnClickListener, AdapterView
         val name = etEmployeeName?.text.toString()
         val id = etEmployeeId?.text.toString()
         if (name.isEmpty() || id.isEmpty() || employeeType == -1) {
-            Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show()
+            ConstantHelper.showToast(this, "Vui lòng nhập đầy đủ thông tin")
             return
         }
         val newEmployee = if (employeeType == R.id.rbEmployeeFullTime) {
             EmployeeFullTime(id, name)
         } else EmployeePartTime(id, name)
-        mEmployeeList.add(newEmployee.convertToString())
+        mEmployeeList.add(newEmployee.toString())
         mAdapter?.notifyDataSetChanged()
         etEmployeeName?.setText("")
         etEmployeeId?.setText("")

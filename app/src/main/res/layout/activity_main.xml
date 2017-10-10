@@ -6,33 +6,45 @@
     android:gravity="center"
     android:layout_height="match_parent"
     tools:context="com.example.trungnguyen.labuit.MainActivity">
-
+    <TextView
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:text="Nguyen Duy Trung"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:text="MSSV: 14521020"
+        android:layout_height="wrap_content" />
     <Button
         android:id="@+id/btLinearLayout_Code"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:text="LINEAR LAYOUT CODE"
+        android:text="Listview TH 4"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btLinearLayout_Xml"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:text="LINEAR LAYOUT XML"
+        android:text="Order Food"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btRelativeLayout"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:text="Relative LAYOUT"
+        android:text="Other"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/lvTh4"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
-        android:text="LISTVIEW"
+        android:text="LAB DIALOG"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

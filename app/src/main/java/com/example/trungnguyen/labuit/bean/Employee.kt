@@ -13,9 +13,12 @@ abstract class Employee(id: String, name: String) {
     init {
         mId = id
         mName = name
+
     }
 
-    fun convertToString(): String {
+    open fun getName() = mName
+
+    override fun toString(): String {
         return mId + " - " + mName + " ---> " + employeeType() + salary()
     }
 
