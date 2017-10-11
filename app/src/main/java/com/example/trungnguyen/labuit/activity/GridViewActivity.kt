@@ -24,7 +24,7 @@ class GridViewActivity : AppCompatActivity(), View.OnClickListener, AdapterView.
     }
 
     private fun addNewFoodDish() {
-        val name = etMonAn?.text.toString()
+        val name = etFood?.text.toString()
         val isPromotion = cbPromotion?.isChecked
         val chosenThumbnail = spThumbnail?.selectedItemPosition
         if (name.isEmpty()) {
@@ -33,7 +33,7 @@ class GridViewActivity : AppCompatActivity(), View.OnClickListener, AdapterView.
         }
         mDataList.add(Dish((mThumbnailArray[chosenThumbnail!!].resId), subDishName(name), isPromotion!!))
         mFoodAdapter.notifyDataSetChanged()
-        etMonAn?.setText("")
+        etFood?.setText("")
         cbPromotion?.isChecked = false
         spThumbnail?.setSelection(0)
     }
@@ -49,14 +49,14 @@ class GridViewActivity : AppCompatActivity(), View.OnClickListener, AdapterView.
         else name
     }
 
-    private var mDataList: ArrayList<Dish> = ArrayList()
-    private var etMonAn: EditText? = null
+    private val mDataList: ArrayList<Dish> = ArrayList()
+    private var etFood: EditText? = null
     private var spThumbnail: Spinner? = null
     private var cbPromotion: CheckBox? = null
     private var gvFood: GridView? = null
     private val mThumbnailArray = arrayOf(Thumbnail.THUMBNAIL_1, Thumbnail.THUMBNAIL_2,
             Thumbnail.THUMBNAIL_3, Thumbnail.THUMBNAIL_4)
-    private var mFoodAdapter = DishAdapter(this, mDataList)
+    private val mFoodAdapter = DishAdapter(this, mDataList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +77,7 @@ class GridViewActivity : AppCompatActivity(), View.OnClickListener, AdapterView.
     }
 
     private fun initViews() {
-        etMonAn = findViewById(R.id.etMonAn)
+        etFood = findViewById(R.id.etMonAn)
         spThumbnail = findViewById(R.id.spThumbnail)
         cbPromotion = findViewById(R.id.cbPromotion)
         gvFood = findViewById(R.id.gvMonAn)

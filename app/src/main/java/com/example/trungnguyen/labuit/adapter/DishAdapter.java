@@ -53,10 +53,14 @@ public class DishAdapter extends BaseAdapter {
         }
         ImageView imgFood = view.findViewById(R.id.imgFood);
         ImageView imgPromotion = view.findViewById(R.id.imgPromotion);
+        if (imgPromotion.getVisibility() == View.VISIBLE)
+            imgPromotion.setVisibility(View.GONE);
         TextView txtFoodName = view.findViewById(R.id.txtDish);
         Dish dish = (Dish) getItem(i);
-        if (dish.getIsPromotion())
-            imgPromotion.setVisibility(View.VISIBLE);
+        if (dish.getIsPromotion()) {
+            if (imgPromotion.getVisibility() == View.GONE)
+                imgPromotion.setVisibility(View.VISIBLE);
+        }
         imgFood.setImageResource(dish.getResId());
         txtFoodName.setText(dish.getDisName());
         return view;
