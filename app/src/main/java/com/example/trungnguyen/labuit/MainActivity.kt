@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Button
 import com.example.trungnguyen.labuit.activity.*
 import com.example.trungnguyen.labuit.view.ContactDialog
-import android.R.attr.phoneNumber
+import android.text.InputType
 import com.example.trungnguyen.labuit.helper.ConstantHelper
 
 
@@ -41,16 +41,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         var intent: Intent? = null
         when (view.id) {
-            R.id.btRelativeLayout -> intent = Intent(this, ListViewTh5Activity::class.java)
-
-            R.id.btLinearLayout_Xml -> intent = Intent(this, GridViewActivity::class.java)
-
-            R.id.btLinearLayout_Code -> intent = Intent(this, ListView4Activity::class.java)
-
-            R.id.lvTh4 -> {
-//                intent = Intent(this, ListViewTh3Activity::class.java)
+            R.id.btRelativeLayout -> {
+//                intent = Intent(this, ListViewTh5Activity::class.java)
                 showContactDialog()
                 return
+            }
+
+            R.id.btLinearLayout_Xml -> intent = Intent(this, ListViewTh3Activity::class.java)
+
+            R.id.btLinearLayout_Code -> intent = Intent(this, ListViewActivity::class.java)
+
+            R.id.lvTh4 -> {
+                intent = Intent(this, ListView4Activity::class.java)
             }
         }
         startActivity(intent)
@@ -60,8 +62,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when (requestCode) {
             ConstantHelper.REQUEST_PHONE_CALL_PERMISSION_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    mContactDialog.requestPhoneCallPermission(phoneNumber.toString())
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    try {
+                        mContactDialog.callAction(InputType.TYPE_CLASS_PHONE.toString())
+                    } catch (ignored: SecurityException) {
+                    }
+                }
             }
         }
     }

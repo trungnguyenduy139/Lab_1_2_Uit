@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.*
 import com.example.trungnguyen.labuit.R
 import com.example.trungnguyen.labuit.adapter.EmployeeAdapter
-import com.example.trungnguyen.labuit.bean.Employee
 import com.example.trungnguyen.labuit.bean.EmployeeFullTime
+import com.example.trungnguyen.labuit.helper.UtilHelper
 
 class ListViewTh5Activity : AppCompatActivity(), View.OnClickListener {
 
@@ -45,7 +45,7 @@ class ListViewTh5Activity : AppCompatActivity(), View.OnClickListener {
         val id = etEmployeeId?.text.toString()
         val position = cbIsManager?.isChecked
         if (name.isEmpty() || id.isEmpty()) {
-            Toast.makeText(this, "Vui Lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show()
+            UtilHelper.showMsg(this, "Vui Lòng nhập đầy đủ thông tin")
             return
         }
         mEmployeeList.add(EmployeeFullTime(id, name, position!!))

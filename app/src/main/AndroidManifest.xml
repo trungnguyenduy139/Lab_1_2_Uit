@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".activity.GridViewActivity" />
         <activity android:name=".activity.ListViewTh5Activity" />
-        <activity android:name=".activity.RelativeLayoutActivity" />
+        <activity android:name=".activity.LabSQLiteActivity" />
         <activity android:name=".activity.ListView4Activity" />
         <activity android:name=".activity.ListViewActivity" />
         <activity android:name=".activity.ListViewTh3Activity" />

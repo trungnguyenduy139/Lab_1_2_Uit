@@ -4,15 +4,22 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import com.example.trungnguyen.labuit.helper.ConstantHelper
 import com.example.trungnguyen.labuit.R
 import com.example.trungnguyen.labuit.adapter.DishAdapter
 import com.example.trungnguyen.labuit.adapter.ThumbnailAdapter
 import com.example.trungnguyen.labuit.bean.Dish
 import com.example.trungnguyen.labuit.bean.Thumbnail
+import com.example.trungnguyen.labuit.helper.UtilHelper
 
 
 class GridViewActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemLongClickListener {
+
+    private val mDataList: ArrayList<Dish> = ArrayList()
+    private var etFood: EditText? = null
+    private var spThumbnail: Spinner? = null
+    private var cbPromotion: CheckBox? = null
+    private var gvFood: GridView? = null
+    private val mFoodAdapter = DishAdapter(this, mDataList)
 
     override fun onItemLongClick(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long): Boolean {
         removeFoodDish(position)
@@ -26,12 +33,16 @@ class GridViewActivity : AppCompatActivity(), View.OnClickListener, AdapterView.
     private fun addNewFoodDish() {
         val name = etFood?.text.toString()
         val isPromotion = cbPromotion?.isChecked
-        val chosenThumbnail = spThumbnail?.selectedItemPosition
+        val tempObj = spThumbnail?.selectedItem
+        val chosenThumbnail: Thumbnail?
+        if (tempObj is Thumbnail)
+            chosenThumbnail = tempObj as Thumbnail
+        else return
         if (name.isEmpty()) {
-            ConstantHelper.showToast(this, "Vui lòng nhập đầy đủ thông tin")
+            UtilHelper.showMsg(this, "Vui lòng nhập đầy đủ thông tin")
             return
         }
-        mDataList.add(Dish((mThumbnailArray[chosenThumbnail!!].resId), subDishName(name), isPromotion!!))
+        mDataList.add(Dish(chosenThumbnail.resId, name, isPromotion!!))
         mFoodAdapter.notifyDataSetChanged()
         etFood?.setText("")
         cbPromotion?.isChecked = false
@@ -39,24 +50,10 @@ class GridViewActivity : AppCompatActivity(), View.OnClickListener, AdapterView.
     }
 
     private fun removeFoodDish(position: Int) {
+        if (position < 0) return
         mDataList.removeAt(position)
         mFoodAdapter.notifyDataSetChanged()
     }
-
-    private fun subDishName(name: String): String {
-        return if (name.length > ConstantHelper.SUB_STRING_INDEX)
-            name.substring(0, ConstantHelper.SUB_STRING_INDEX) + "..."
-        else name
-    }
-
-    private val mDataList: ArrayList<Dish> = ArrayList()
-    private var etFood: EditText? = null
-    private var spThumbnail: Spinner? = null
-    private var cbPromotion: CheckBox? = null
-    private var gvFood: GridView? = null
-    private val mThumbnailArray = arrayOf(Thumbnail.THUMBNAIL_1, Thumbnail.THUMBNAIL_2,
-            Thumbnail.THUMBNAIL_3, Thumbnail.THUMBNAIL_4)
-    private val mFoodAdapter = DishAdapter(this, mDataList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

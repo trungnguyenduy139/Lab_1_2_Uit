@@ -23,10 +23,13 @@ public class ThumbnailAdapter extends ArrayAdapter<Thumbnail> {
     private Context mContext;
     private Thumbnail[] mThumbnailList;
 
+    private int mResId;
+
     public ThumbnailAdapter(@NonNull Context context, int resource, @NonNull Thumbnail[] objects) {
         super(context, resource, objects);
         mContext = context;
         mThumbnailList = objects;
+        mResId = resource;
     }
 
     @Override
@@ -42,7 +45,7 @@ public class ThumbnailAdapter extends ArrayAdapter<Thumbnail> {
 
     private View getCustomView(int position, View view, ViewGroup parent) {
         if (view == null) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.item_thubnail, parent, false);
+            view = LayoutInflater.from(mContext).inflate(mResId, parent, false);
         }
         Thumbnail thumbnail = mThumbnailList[position];
         TextView txtThumbnailName = view.findViewById(R.id.txtThumbnailName);

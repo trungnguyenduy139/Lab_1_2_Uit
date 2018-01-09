@@ -46,7 +46,7 @@ public class DishAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, ViewGroup viewGroup) {
         if (view == null) {
             view = LayoutInflater.from(mContext).inflate(R.layout.dish_item, viewGroup, false);
             view.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -56,7 +56,7 @@ public class DishAdapter extends BaseAdapter {
         if (imgPromotion.getVisibility() == View.VISIBLE)
             imgPromotion.setVisibility(View.GONE);
         TextView txtFoodName = view.findViewById(R.id.txtDish);
-        Dish dish = (Dish) getItem(i);
+        Dish dish = mDataList.get(position);
         if (dish.getIsPromotion()) {
             if (imgPromotion.getVisibility() == View.GONE)
                 imgPromotion.setVisibility(View.VISIBLE);

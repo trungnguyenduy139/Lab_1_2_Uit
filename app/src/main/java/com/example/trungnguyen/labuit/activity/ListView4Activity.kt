@@ -8,6 +8,7 @@ import com.example.trungnguyen.labuit.R
 import com.example.trungnguyen.labuit.bean.EmployeeFullTime
 import com.example.trungnguyen.labuit.bean.EmployeePartTime
 import com.example.trungnguyen.labuit.helper.ConstantHelper
+import com.example.trungnguyen.labuit.helper.UtilHelper
 
 class ListView4Activity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemLongClickListener {
 
@@ -56,7 +57,7 @@ class ListView4Activity : AppCompatActivity(), View.OnClickListener, AdapterView
         val name = etEmployeeName?.text.toString()
         val id = etEmployeeId?.text.toString()
         if (name.isEmpty() || id.isEmpty() || employeeType == -1) {
-            ConstantHelper.showToast(this, "Vui lòng nhập đầy đủ thông tin")
+            UtilHelper.showMsg(this, "Vui lòng nhập đầy đủ thông tin")
             return
         }
         val newEmployee = if (employeeType == R.id.rbEmployeeFullTime) {
